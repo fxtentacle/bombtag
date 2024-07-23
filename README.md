@@ -16,3 +16,6 @@ You can use `bombtag -n <name>` like a time-delayed replacement for `killall`.
 ### Setup
 
 See `compile_in_docker.sh` and the `Dockerfile`.
+
+Also, the entire source code is **128 lines of code**,
+so feel free to just read it.

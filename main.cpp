@@ -121,7 +121,6 @@ Usage: bombtag [options]
     }
 };
 
-
 int main(int argc, char **argv) {
     RunMe runme;
     if(!runme.parse_args(argc, argv)) return 1;
