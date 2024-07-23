@@ -3,10 +3,9 @@
 #include <filesystem>
 #include <thread>
 #include <csignal>
-#include <cassert>
 #include <cstring>
 #include <algorithm>
-
+#include <unistd.h>
 
 extern char **environ;
 
@@ -20,12 +19,12 @@ struct RunMe {
 
     void print_usage() {
         std::cout << R"(bombtag will wait for one or more programs to voluntarily exit, or it'll forcibly terminate them, first with SIGTERM and then with SIGKILL
+
 Usage: bombtag [options]
 -t seconds     Timeout before SIGTERM (default 30)
 -k seconds     After SIGTERM, timeout before SIGKILL (default 30)
 -p pid         PID of the process that shall exit
 -n name        Name of the process that shall exit
-}
 )" << std::endl;
     }
 
@@ -91,6 +90,7 @@ Usage: bombtag [options]
             if(!target_name.empty() && path.filename() != target_name) return 0;
         }
         kill(std::stoi(target_pid), SIGKILL);
+        return 0;
     }
 
     int spawn_copies_by_name() {
@@ -112,6 +112,7 @@ Usage: bombtag [options]
                 return wait_for_single_program_to_exit();
             }
         }
+        return 0;
     }
 
     int run() {
