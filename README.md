@@ -13,3 +13,6 @@ Usage: bombtag [options]
 
 You can use `bombtag -n <name>` like a time-delayed replacement for `killall`.
 
+### Setup
+
+See `compile_in_docker.sh` and the `Dockerfile`.
